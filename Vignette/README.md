@@ -20,7 +20,8 @@ following packages installed:
 -`tidyverse`  
 -`hrbrthemes`  
 -`viridis`  
--`forcats` -`ggplot2`  
+-`forcats`  
+-`ggplot2`  
 -`tidyr`  
 -`rmarkdown`
 
@@ -307,374 +308,30 @@ moviedata$BoxOffice <- moviedata$BoxOffice/1e7 # get in 10millions made
 Let’s have a look at our clean dataframe now!
 
 ``` r
-moviedata
+head(moviedata)
 ```
 
-    ##    Year     Rated Runtime
-    ## 1  1968         G     149
-    ## 2  1972         R     175
-    ## 3  1941        PG     119
-    ## 4  1981        PG     115
-    ## 5  1960 Not Rated     174
-    ## 6  1954 Not Rated     207
-    ## 7  2000        PG      98
-    ## 8  2007         R     158
-    ## 9  1952         G     103
-    ## 10 1990         R     145
-    ## 11 1959  Approved     136
-    ## 12 2001         R     147
-    ## 13 1948 Not Rated      89
-    ## 14 2008     PG-13     152
-    ## 15 1931         G      87
-    ## 16 1937 Not Rated     113
-    ## 17 1940    Passed      92
-    ## 18 1948 Not Rated     135
-    ## 19 1958        PG     128
-    ## 20 1999   Unrated      92
-    ## 21 1956    Passed     119
-    ## 22 1966 Not Rated      83
-    ## 23 1989         R     120
-    ## 24 1950 Not Rated      88
-    ## 25 1939 Not Rated     110
-    ## 26 1975        PG     124
-    ## 27 1944    Passed     107
-    ## 28 1959 Not Rated      99
-    ## 29 1977        PG     121
-    ## 30 1928    Passed     114
-    ## 31 1968     PG-13     165
-    ## 32 1979         R     117
-    ## 33 1953 Not Rated     136
-    ## 34 1994         R     154
-    ## 35 1998        PG     103
-    ## 36 1962  Approved     218
-    ## 37 1960         R     109
-    ## 38 1954 Not Rated     124
-    ## 39 1966         R     205
-    ## 40 1964 Not Rated      91
-    ## 41 1974         R     130
-    ## 42 1957 Not Rated      96
-    ## 43 2003         R     102
-    ## 44 1976         R     114
-    ## 45 2001        PG     125
-    ## 46 1968 Not Rated      96
-    ## 47 1925 Not Rated      66
-    ## 48 1936         G      87
-    ## 49 1960 Not Rated      90
-    ## 50 1931    Passed      99
-    ## 51 1982         R     117
-    ## 52 1972 Not Rated     124
-    ## 53 1945 Not Rated     103
-    ## 54 1922 Not Rated      94
-    ## 55 1980        PG      88
-    ## 56 2013         R     108
-    ## 57 2015         R     120
-    ## 58 1979         R     147
-    ## 59 2005         R     134
-    ## 60 1933 Not Rated      69
-    ## 61 1999         R      81
-    ## 62 1976        PG     138
-    ## 63 1926    Passed      67
-    ## 64 2004         R     108
-    ## 65 2003         R      98
-    ## 66 1985 Not Rated     142
-    ## 67 1995         R     170
-    ## 68 1980         R     146
-    ## 69 1995         G      81
-    ## 70 1978       N/A      80
-    ## 71 1974         R     155
-    ## 72 1977        PG      93
-    ## 73 1959    Passed     121
-    ## 74 1927 Not Rated     153
-    ## 75 1941    Passed     100
-    ## 76 1984         R      82
-    ## 77 1934    Passed     105
-    ## 78 1988         R     132
-    ## 79 1970         R     113
-    ## 80 1982       16+     109
-    ## 81 1991     TV-PG     113
-    ## 82 1975        PG     185
-    ## 83 1980         R     129
-    ## 84 1954 Not Rated     207
-    ## 85 1972 Not Rated      95
-    ## 86 1966 Not Rated     121
-    ## 87 1988         R      88
-    ## 88 2014         R     165
-    ## 89 1957  Approved      88
-    ## 90 2022     PG-13     142
-    ##                                                           Language
-    ## 1                                         English, Russian, French
-    ## 2                                          English, Italian, Latin
-    ## 3                                                 English, Italian
-    ## 4                 English, German, Hebrew, Spanish, Arabic, Nepali
-    ## 5                                 Italian, English, French, German
-    ## 6                                                         Japanese
-    ## 7                         Cantonese, Shanghainese, French, Spanish
-    ## 8                                          English, American Sign 
-    ## 9                                                          English
-    ## 10                                                English, Italian
-    ## 11                                                 English, French
-    ## 12                                        English, Spanish, French
-    ## 13                                        Italian, English, German
-    ## 14                                               English, Mandarin
-    ## 15                                                   None, English
-    ## 16                                French, German, English, Russian
-    ## 17                                                 English, French
-    ## 18                                        English, French, Russian
-    ## 19                                                         English
-    ## 20                                        French, Italian, Russian
-    ## 21                                        English, Navajo, Spanish
-    ## 22                                                Swedish, English
-    ## 23                               English, Italian, Spanish, Korean
-    ## 24                                                        Japanese
-    ## 25                                         French, German, English
-    ## 26                                                         English
-    ## 27                                                         English
-    ## 28                                                 French, English
-    ## 29                                                         English
-    ## 30                                                    None, French
-    ## 31                                       Italian, English, Spanish
-    ## 32                                                         English
-    ## 33                                               Japanese, English
-    ## 34                                        English, Spanish, French
-    ## 35                                                         English
-    ## 36                                        English, Arabic, Turkish
-    ## 37                                                         English
-    ## 38                                                        Japanese
-    ## 39                                         Russian, Italian, Tatar
-    ## 40                                                 French, English
-    ## 41                                     English, Cantonese, Spanish
-    ## 42                                                  Swedish, Latin
-    ## 43                               English, Japanese, German, French
-    ## 44                                                English, Spanish
-    ## 45                                                        Japanese
-    ## 46                                                         English
-    ## 47                                          None, Russian, English
-    ## 48                                                         English
-    ## 49                                                 French, English
-    ## 50                                                          German
-    ## 51 English, German, Cantonese, Japanese, Hungarian, Arabic, Korean
-    ## 52                                                          German
-    ## 53                                          Italian, German, Latin
-    ## 54                                                 German, English
-    ## 55                                                         English
-    ## 56                                                         English
-    ## 57                                                English, Russian
-    ## 58                                     English, French, Vietnamese
-    ## 59                                                English, Spanish
-    ## 60                                                         English
-    ## 61                                                         English
-    ## 62                                                English, Spanish
-    ## 63                                                            None
-    ## 64                                                         English
-    ## 65                                                         English
-    ## 66                                     Belarusian, Russian, German
-    ## 67                                                English, Spanish
-    ## 68                                                         English
-    ## 69                                                         English
-    ## 70                                                         English
-    ## 71                                                English, Italian
-    ## 72                                                 English, German
-    ## 73                                                         English
-    ## 74                                                 German, English
-    ## 75                                                         English
-    ## 76                                                         English
-    ## 77                                                         English
-    ## 78                              English, German, Italian, Japanese
-    ## 79                                 Italian, French, Latin, Chinese
-    ## 80                                              English, Norwegian
-    ## 81                                                 English, French
-    ## 82                                         English, German, French
-    ## 83                                                         English
-    ## 84                                                        Japanese
-    ## 85                                        German, Quechua, Spanish
-    ## 86                                         Arabic, French, English
-    ## 87                                                         Spanish
-    ## 88                             English, Spanish, Ukrainian, Arabic
-    ## 89                                          English, German, Latin
-    ## 90                                                 English, German
-    ##                          Country Metascore imdbRating imdbVotes  BoxOffice
-    ## 1  United Kingdom, United States        84        8.3   685,693  6.0481243
-    ## 2                  United States       100        9.2 1,910,007 13.6381073
-    ## 3                  United States       100        8.3   450,876  0.1627530
-    ## 4                  United States        85        8.4   986,622 24.8159971
-    ## 5                  Italy, France        95        8.0    75,524         NA
-    ## 6                          Japan        98        8.6   352,938  0.0318649
-    ## 7              Hong Kong, France        87        8.1   157,146  0.2738980
-    ## 8                  United States        93        8.2   603,049  4.0222514
-    ## 9                  United States        99        8.3   248,905  0.1884537
-    ## 10                 United States        92        8.7 1,192,405  4.6909721
-    ## 11                 United States        98        8.3   334,812  0.0066728
-    ## 12         France, United States        86        7.9   367,159  0.7220243
-    ## 13                         Italy       N/A        8.3   167,751  0.0371111
-    ## 14 United States, United Kingdom        84        9.0 2,719,396 53.4987076
-    ## 15                 United States        99        8.5   188,488  0.0019181
-    ## 16                        France       N/A        8.1    37,710         NA
-    ## 17                 United States       N/A        7.8    60,871  0.0296000
-    ## 18                United Kingdom       N/A        8.1    36,929         NA
-    ## 19                 United States       100        8.3   410,665  0.7705225
-    ## 20                        France        91        7.3    12,980  0.0247606
-    ## 21                 United States        94        7.9    92,630         NA
-    ## 22                        Sweden        86        8.1   123,865         NA
-    ## 23                 United States        93        8.0   106,243  2.7545445
-    ## 24                         Japan        98        8.2   172,950  0.0046808
-    ## 25                        France        99        7.9    30,153  0.0273641
-    ## 26                 United States        87        8.1   624,212 26.5859065
-    ## 27                 United States        95        8.3   160,822         NA
-    ## 28                        France       N/A        8.1   122,274  0.0000509
-    ## 29                 United States        90        8.6 1,393,554 46.0998507
-    ## 30                        France        98        8.2    57,275  0.0021877
-    ## 31          Italy, United States        82        8.5   337,308  0.5321508
-    ## 32 United Kingdom, United States        89        8.5   904,074  8.1900459
-    ## 33                         Japan       100        8.2    64,162         NA
-    ## 34                 United States        95        8.9 2,110,312 10.7928762
-    ## 35                 United States        90        8.2 1,117,629 12.5618201
-    ## 36                United Kingdom       100        8.3   300,954  4.5306425
-    ## 37                 United States        97        8.5   688,169  3.2000000
-    ## 38                         Japan        96        8.4    17,311         NA
-    ## 39                  Soviet Union       N/A        8.1    55,219  0.0124189
-    ## 40          France, West Germany        86        7.8    29,155  0.0028030
-    ## 41                 United States        92        8.2   334,938  2.9200000
-    ## 42                        Sweden        88        8.1   189,997         NA
-    ## 43          United States, Japan        91        7.7   467,274  4.4585453
-    ## 44                 United States        94        8.2   864,328  2.8262574
-    ## 45                         Japan        96        8.6   790,472  1.5205725
-    ## 46                 United States        89        7.8   133,344  0.0236452
-    ## 47                  Soviet Union        97        7.9    59,630  0.0051198
-    ## 48                 United States        96        8.5   248,563  0.0163577
-    ## 49                        France       N/A        7.7    84,653  0.0414173
-    ## 50                       Germany       N/A        8.3   161,856  0.0035566
-    ## 51                 United States        84        8.1   788,079  3.2914489
-    ## 52                  West Germany        73        7.6    10,430  0.0008144
-    ## 53                         Italy       N/A        8.0    27,729         NA
-    ## 54                       Germany       N/A        7.9   100,760         NA
-    ## 55                 United States        78        7.7   248,811  8.3453539
-    ## 56   United Kingdom, Switzerland        80        6.3   149,540  0.2614251
-    ## 57                     Australia        90        8.1 1,030,594 15.4109060
-    ## 58                 United States        94        8.4   682,604  9.6042913
-    ## 59         United States, Canada        87        7.7   367,384  8.3043761
-    ## 60                 United States        93        7.8    61,470         NA
-    ## 61                 United States        81        6.5   271,026 14.0539099
-    ## 62                 United States        84        7.9   120,296  7.0600000
-    ## 63                 United States       N/A        8.1    93,972         NA
-    ## 64                 United States        89        8.3 1,030,727  3.4400301
-    ## 65                 United States        38        6.2   147,009  8.0571655
-    ## 66                  Soviet Union       N/A        8.4    85,816  0.0071909
-    ## 67                 United States        76        8.3   677,132  6.7436818
-    ## 68 United Kingdom, United States        66        8.4 1,048,472  4.5634352
-    ## 69          United States, Japan        96        8.3 1,018,595 22.3225679
-    ## 70                 United States        96        7.2     7,188  0.0404508
-    ## 71                 United States        88        8.1    26,849  1.3336830
-    ## 72                 United States        92        8.0   270,491  3.8251425
-    ## 73                 United States        98        8.2   273,318         NA
-    ## 74                       Germany        98        8.3   178,201  0.1236166
-    ## 75                 United States        97        8.0   162,449  0.0018180
-    ## 76                 United States        92        7.9   142,861  0.4736202
-    ## 77                 United States        87        8.1   107,374         NA
-    ## 78                 United States        72        8.2   901,796  8.3844093
-    ## 79   Italy, France, West Germany       100        7.9    32,062  0.0238792
-    ## 80         United States, Canada        57        8.2   439,435  1.9629760
-    ## 81        United States, Germany        81        6.7     3,003  0.1683422
-    ## 82 United Kingdom, United States        89        8.1   173,929         NA
-    ## 83                 United States        90        8.1   362,980  2.3383987
-    ## 84                         Japan        98        8.6   352,938  0.0318649
-    ## 85          West Germany, Mexico       N/A        7.8    59,189         NA
-    ## 86                Italy, Algeria        96        8.1    62,381  0.0879794
-    ## 87                         Spain        85        7.5    43,979  0.7251740
-    ## 88                 United States       100        7.9   360,203  2.5352281
-    ## 89                 United States        90        8.4   202,149         NA
-    ## 90 United Kingdom, United States        47        6.2   153,497  9.5850844
-    ##    Score TopBottom
-    ## 1   8.35       Top
-    ## 2   9.60       Top
-    ## 3   9.15       Top
-    ## 4   8.45       Top
-    ## 5   8.75       Top
-    ## 6   9.20       Top
-    ## 7   8.40       Top
-    ## 8   8.75       Top
-    ## 9   9.10       Top
-    ## 10  8.95       Top
-    ## 11  9.05       Top
-    ## 12  8.25       Top
-    ## 13    NA       Top
-    ## 14  8.70       Top
-    ## 15  9.20       Top
-    ## 16    NA       Top
-    ## 17    NA       Top
-    ## 18    NA       Top
-    ## 19  9.15       Top
-    ## 20  8.20       Top
-    ## 21  8.65       Top
-    ## 22  8.35       Top
-    ## 23  8.65       Top
-    ## 24  9.00       Top
-    ## 25  8.90       Top
-    ## 26  8.40       Top
-    ## 27  8.90       Top
-    ## 28    NA       Top
-    ## 29  8.80       Top
-    ## 30  9.00       Top
-    ## 31  8.35       Top
-    ## 32  8.70       Top
-    ## 33  9.10       Top
-    ## 34  9.20       Top
-    ## 35  8.60       Top
-    ## 36  9.15       Top
-    ## 37  9.10       Top
-    ## 38  9.00       Top
-    ## 39    NA       Top
-    ## 40  8.20       Top
-    ## 41  8.70       Top
-    ## 42  8.45       Top
-    ## 43  8.40       Top
-    ## 44  8.80       Top
-    ## 45  9.10       Top
-    ## 46  8.35       Top
-    ## 47  8.80       Top
-    ## 48  9.05       Top
-    ## 49    NA       Top
-    ## 50    NA       Top
-    ## 51  8.25       Top
-    ## 52  7.45       Top
-    ## 53    NA       Top
-    ## 54    NA       Top
-    ## 55  7.75       Top
-    ## 56  7.15       Top
-    ## 57  8.55       Top
-    ## 58  8.90       Top
-    ## 59  8.20       Top
-    ## 60  8.55       Top
-    ## 61  7.30       Top
-    ## 62  8.15       Top
-    ## 63    NA       Top
-    ## 64  8.60       Top
-    ## 65  5.00       Top
-    ## 66    NA       Top
-    ## 67  7.95       Top
-    ## 68  7.50       Top
-    ## 69  8.95       Top
-    ## 70  8.40       Top
-    ## 71  8.45       Top
-    ## 72  8.60       Top
-    ## 73  9.00       Top
-    ## 74  9.05       Top
-    ## 75  8.85       Top
-    ## 76  8.55       Top
-    ## 77  8.40       Top
-    ## 78  7.70       Top
-    ## 79  8.95       Top
-    ## 80  6.95       Top
-    ## 81  7.40       Top
-    ## 82  8.50       Top
-    ## 83  8.55       Top
-    ## 84  9.20       Top
-    ## 85    NA       Top
-    ## 86  8.85       Top
-    ## 87  8.00       Top
-    ## 88  8.95       Top
-    ## 89  8.70       Top
-    ## 90  5.45       Top
-    ##  [ reached 'max' / getOption("max.print") -- omitted 106 rows ]
+    ##   Year     Rated Runtime                                         Language
+    ## 1 1968         G     149                         English, Russian, French
+    ## 2 1972         R     175                          English, Italian, Latin
+    ## 3 1941        PG     119                                 English, Italian
+    ## 4 1981        PG     115 English, German, Hebrew, Spanish, Arabic, Nepali
+    ## 5 1960 Not Rated     174                 Italian, English, French, German
+    ## 6 1954 Not Rated     207                                         Japanese
+    ##                         Country Metascore imdbRating imdbVotes  BoxOffice
+    ## 1 United Kingdom, United States        84        8.3   685,693  6.0481243
+    ## 2                 United States       100        9.2 1,910,007 13.6381073
+    ## 3                 United States       100        8.3   450,876  0.1627530
+    ## 4                 United States        85        8.4   986,622 24.8159971
+    ## 5                 Italy, France        95        8.0    75,524         NA
+    ## 6                         Japan        98        8.6   352,938  0.0318649
+    ##   Score TopBottom
+    ## 1  8.35       Top
+    ## 2  9.60       Top
+    ## 3  9.15       Top
+    ## 4  8.45       Top
+    ## 5  8.75       Top
+    ## 6  9.20       Top
 
 ## Contingency Tables
 
@@ -1003,7 +660,7 @@ moviedata %>%
   facet_wrap(~Rated)
 ```
 
-![](C:/Users/Owner/OneDrive/Documents/ST501/ST558_Project1/Vignette/README_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+![](./images/unnamed-chunk-18-1.png)<!-- -->
 
 It seems that the rated R movies had the best scores overall. The PG-13
 movies had generally lower scores, PG was fairly uniform, and the Not
@@ -1029,7 +686,7 @@ moviedata %>%
   facet_wrap(~Rated)
 ```
 
-![](C:/Users/Owner/OneDrive/Documents/ST501/ST558_Project1/Vignette/README_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
+![](./images/unnamed-chunk-19-1.png)<!-- -->
 
 Almost all the movies made less than 300 million dollars and most of
 them made less than 100 million. The TV-PG, G, and R movies are heavily
@@ -1049,7 +706,7 @@ g1 + labs(title = "RunTime vs Score") +
              position = "jitter") 
 ```
 
-![](C:/Users/Owner/OneDrive/Documents/ST501/ST558_Project1/Vignette/README_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
+![](./images/unnamed-chunk-20-1.png)<!-- -->
 
 It appears that the length of the movie has almost no relationship with
 the score! I suppose that makes sense…
@@ -1063,7 +720,7 @@ g2 + labs(title = "Score vs BoxOffice") +
              position = "jitter") 
 ```
 
-![](C:/Users/Owner/OneDrive/Documents/ST501/ST558_Project1/Vignette/README_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
+![](./images/unnamed-chunk-21-1.png)<!-- -->
 
 There seems to be just a slight positive relationship between these two
 variables. I would expect the relationship to be much stronger, but
@@ -1078,7 +735,7 @@ g3 + labs(title = "Barplot of Rated") +
   labs(x = "Rated") 
 ```
 
-![](C:/Users/Owner/OneDrive/Documents/ST501/ST558_Project1/Vignette/README_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
+![](./images/unnamed-chunk-22-1.png)<!-- -->
 
 Nothing new here… This is just the first contingency table above
 reformatted. I’m not surprised that the most extremely rated movies are
@@ -1094,7 +751,7 @@ g4 + geom_boxplot() +
   geom_point(position = "jitter", aes(colour = Rated))  
 ```
 
-![](C:/Users/Owner/OneDrive/Documents/ST501/ST558_Project1/Vignette/README_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
+![](./images/unnamed-chunk-23-1.png)<!-- -->
 
 ``` r
 g5 <- ggplot(moviedata[97:196,], aes(x = Rated, y = Score))
@@ -1102,7 +759,7 @@ g5 + geom_boxplot() +
   labs(x = "Rated", title = "BoxPlots of Score and Rated for Bottom 100") + geom_point(position = "jitter", aes(colour = Rated))  
 ```
 
-![](C:/Users/Owner/OneDrive/Documents/ST501/ST558_Project1/Vignette/README_files/figure-gfm/unnamed-chunk-23-2.png)<!-- -->
+![](./images/unnamed-chunk-23-2.png)<!-- -->
 
 The worst movies were almost exclusively rated PG, PG-13, and R. Some of
 the worst PG-13 and R movies have very high scores while some of the
@@ -1117,7 +774,7 @@ g6 + labs(title = "BoxOffice vs Year") +
              position = "jitter") 
 ```
 
-![](C:/Users/Owner/OneDrive/Documents/ST501/ST558_Project1/Vignette/README_files/figure-gfm/unnamed-chunk-24-1.png)<!-- -->
+![](./images/unnamed-chunk-24-1.png)<!-- -->
 
 It looks like most of the best movies of all time happened many years
 ago while most of the worst movies of all time were more recent. There
